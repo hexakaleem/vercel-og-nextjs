@@ -7,72 +7,202 @@ export const config = {
 
 export default async function handler(req: NextRequest) {
   const { searchParams } = req.nextUrl;
-  const date = searchParams.get('date') || 'N/A';
-  const time = searchParams.get('time') || 'N/A';
-  const address = searchParams.get('address') || 'N/A';
-  const puppy = searchParams.get('puppy') || 'N/A';
-  const price = searchParams.get('price') || 'SG';
+
+  // Extract query parameters
+  const customerName = searchParams.get('customerName') || 'Customer Name';
+  const date = searchParams.get('date') || 'Date for photo';
+  const time = searchParams.get('time') || 'TIME';
+  const shopName = searchParams.get('shopName') || 'Shop Name';
+  const address1 = searchParams.get('address1') || 'Address Line 1';
+  const address2 = searchParams.get('address2') || 'Address Line 2';
+  const breed = searchParams.get('breed') || 'BREED';
+  const price = searchParams.get('price') || 'PRICE';
+  const logoUrl = searchParams.get('logoUrl') || 'https://i.spread.name/9a3531c3-df76-477e-b4a5-32de4e9eb546_Little-Black-Nose.jpg';
+  const shopLogoUrl = searchParams.get('shopLogoUrl') || 'https://i.spread.name/9a3531c3-df76-477e-b4a5-32de4e9eb546_Little-Black-Nose.jpg';
+  const puppyPhotoUrl = searchParams.get('puppyPhotoUrl') || 'https://i.spread.name/59893f26-390b-48a6-bd54-37879463a98d_B.jpg';
 
   return new ImageResponse(
     (
       <div
         style={{
-          backgroundColor: '#66c0c9',
-          width: '100%',
-          height: '100%',
-          padding: 20,
+          width: '400px',
+          height: '800px',
+          backgroundColor: '#7FC7D0',
           position: 'relative',
           fontFamily: 'Arial, sans-serif',
+          color: 'black',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
         }}
       >
+        {/* Frame */}
         <div
           style={{
             position: 'absolute',
-            top: 20,
-            left: 20,
+            top: '10px',
+            left: '10px',
+            right: '10px',
+            bottom: '10px',
+            border: '2px solid white',
+          }}
+        />
+
+        {/* Logo */}
+        <img
+          src={logoUrl}
+          alt="Puppy Singapore Logo"
+          style={{
+            width: '50px',
+            height: '50px',
+            position: 'absolute',
+            top: '20px',
+            left: '20px',
+          }}
+        />
+
+        {/* Photo Container */}
+        <div
+          style={{
+            position: 'relative',
+            width: '350px',
+            height: '200px',
+            margin: '60px auto 10px',
+            display: 'flex',
+            justifyContent: 'space-between',
           }}
         >
           <img
-            src="https://example.com/logo.png" // Add your logo URL here
-            alt="Puppy Singapore"
-            width="100"
+            src={shopLogoUrl}
+            alt="Shop Logo"
+            style={{
+              position: 'absolute',
+              width: '150px',
+              height: '150px',
+              borderRadius: '50%',
+              left: '0',
+              top: '25px',
+              zIndex: 1,
+              border: '3px solid white',
+              boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+            }}
+          />
+          <img
+            src={puppyPhotoUrl}
+            alt="Puppy Photo"
+            style={{
+              position: 'absolute',
+              width: '200px',
+              height: '200px',
+              borderRadius: '50%',
+              right: '0',
+              top: '0',
+              zIndex: 2,
+              border: '3px solid white',
+              boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+            }}
           />
         </div>
 
+        {/* Hello Box */}
         <div
           style={{
-            textAlign: 'center',
-            marginTop: 100,
-            fontSize: 50,
-            color: '#ff5959',
-            fontWeight: 'bold',
+            background: 'white',
+            padding: '15px 30px',
+            margin: '10px auto',
+            width: '80%',
+            borderRadius: '10px',
+            position: 'relative',
+            height: '80px',
+            boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
-          Hello!
+          <p
+            style={{
+              color: '#FF6B6B',
+              fontSize: '22px',
+              fontWeight: 'bold',
+              textAlign: 'center',
+              margin: '0',
+              textShadow: '1px 1px 0 #FFB6B6',
+            }}
+          >
+            Hello!
+          </p>
+          <p
+            style={{
+              color: '#333',
+              fontSize: '18px',
+              fontWeight: 'bold',
+              textAlign: 'center',
+              marginTop: '10px',
+            }}
+          >
+            {customerName}
+          </p>
         </div>
 
+        {/* Details Section */}
         <div
           style={{
-            marginTop: 30,
-            fontSize: 30,
-            color: '#fff',
+            backgroundColor: 'white',
+            padding: '20px',
+            width: '80%',
+            borderRadius: '10px',
+            margin: '20px auto',
+            boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
           }}
         >
-          <p>Appointment details:</p>
-          <p>Date: <strong>{date}</strong></p>
-          <p>Time: <strong>{time}</strong></p>
-          <p>Address: <strong>{address}</strong></p>
-          <p>Puppy: <strong>{puppy}</strong></p>
-          <p>Price: <strong>{price}</strong></p>
+          <h3
+            style={{
+              color: '#007BFF',
+              fontSize: '18px',
+              marginBottom: '10px',
+              fontWeight: 'bold',
+            }}
+          >
+            Appointment Details:
+          </h3>
+          <p style={{ color: '#555', margin: '5px 0' }}>
+            <strong style={{ color: '#333' }}>Date:</strong> {date}
+          </p>
+          <p style={{ color: '#555', margin: '5px 0' }}>
+            <strong style={{ color: '#333' }}>Time:</strong> {time}
+          </p>
+          <p style={{ color: '#555', margin: '5px 0' }}>
+            <strong style={{ color: '#333' }}>Address:</strong> {shopName}, 
+          </p>
+          <p style={{ color: '#555', margin: '5px 0' }}>
+          {address1}
+          </p>
+          <p style={{ color: '#555', margin: '5px 0' }}>
+             {address2}
+          </p>
+          <p style={{ color: '#555', margin: '5px 0' }}>
+            <strong style={{ color: '#333' }}>Puppy:</strong> {breed}
+          </p>
+          <p style={{ color: '#555', margin: '5px 0' }}>
+            <strong style={{ color: '#333' }}>Price:</strong> ${price}
+          </p>
         </div>
 
+        {/* Footer */}
         <div
           style={{
             position: 'absolute',
-            bottom: 20,
-            left: 20,
-            fontSize: 20,
-            color: '#fff',
+            bottom: '25px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '90%',
+            textAlign: 'center',
+            fontSize: '12px',
           }}
         >
           Thank you for choosing Puppy Singapore
@@ -80,8 +210,8 @@ export default async function handler(req: NextRequest) {
       </div>
     ),
     {
-      width: 1200,
-      height: 630,
+      width: 400,
+      height: 800,
     }
   );
 }
