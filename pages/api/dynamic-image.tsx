@@ -17,7 +17,8 @@ export default async function handler(req: NextRequest) {
   const address2 = searchParams.get('address2') || 'Address Line 2';
   const breed = searchParams.get('breed') || 'BREED';
   const price = searchParams.get('price') || 'PRICE';
-  const logoUrl = searchParams.get('logoUrl') || 'https://i.spread.name/9a3531c3-df76-477e-b4a5-32de4e9eb546_Little-Black-Nose.jpg';
+  const shortMessage = searchParams.get('message') || 'Please Contact Jhon';
+  const logoUrl = searchParams.get('logoUrl') || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO7xrpAH6W2EqLATVKz35Odsh8wU2sMOk8PA&s';
   const shopLogoUrl = searchParams.get('shopLogoUrl') || 'https://i.spread.name/9a3531c3-df76-477e-b4a5-32de4e9eb546_Little-Black-Nose.jpg';
   const puppyPhotoUrl = searchParams.get('puppyPhotoUrl') || 'https://i.spread.name/59893f26-390b-48a6-bd54-37879463a98d_B.jpg';
 
@@ -26,7 +27,7 @@ export default async function handler(req: NextRequest) {
       <div
         style={{
           width: '400px',
-          height: '800px',
+          height: '790px',
           backgroundColor: '#7FC7D0',
           position: 'relative',
           fontFamily: 'Arial, sans-serif',
@@ -53,8 +54,8 @@ export default async function handler(req: NextRequest) {
           src={logoUrl}
           alt="Puppy Singapore Logo"
           style={{
-            width: '50px',
-            height: '50px',
+            width: '60px',
+            height: '60px',
             position: 'absolute',
             top: '20px',
             left: '20px',
@@ -162,13 +163,15 @@ export default async function handler(req: NextRequest) {
         >
           <h3
             style={{
-              color: '#007BFF',
+              color: '#FF6B6B',
               fontSize: '18px',
+              marginTop:'5px',
               marginBottom: '10px',
               fontWeight: 'bold',
+              alignSelf: 'center'
             }}
           >
-            Appointment Details:
+            Appointment Details
           </h3>
           <p style={{ color: '#555', margin: '5px 0' }}>
             <strong style={{ color: '#333' }}>Date:</strong> {date}
@@ -197,21 +200,33 @@ export default async function handler(req: NextRequest) {
         <div
           style={{
             position: 'absolute',
-            bottom: '25px',
+            bottom: '5px',
             left: '50%',
             transform: 'translateX(-50%)',
             width: '90%',
+            display: 'flex',
+            flexDirection: 'column',
             textAlign: 'center',
             fontSize: '12px',
           }}
         >
+          <p style={{
+            color: "#FF6B6B",
+
+          }}>
+          {shortMessage}
+          </p>
+          <p style={{
+            alignSelf : "flex-end"
+          }}>
           Thank you for choosing Puppy Singapore
+          </p> 
         </div>
       </div>
     ),
     {
       width: 400,
-      height: 800,
+      height: 790,
     }
   );
 }
