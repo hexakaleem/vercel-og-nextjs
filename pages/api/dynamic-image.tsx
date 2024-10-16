@@ -17,7 +17,7 @@ export default async function handler(req: NextRequest) {
   const address2 = searchParams.get('address2') || "";
   const breed = searchParams.get('breed') || '';
   const price = searchParams.get('price') || "";
-  const shortMessage = searchParams.get('message') || 'Please Contact Jhon';
+  const shortMessage = searchParams.get('shortMessage') || 'Please Contact Jhon';
   const logoUrl = searchParams.get('logoUrl') || 'https://i.imgur.com/RGijyjt.png';
   const shopLogoUrl = searchParams.get('shopLogoUrl') || 'https://i.spread.name/9a3531c3-df76-477e-b4a5-32de4e9eb546_Little-Black-Nose.jpg';
   const puppyPhotoUrl = searchParams.get('puppyPhotoUrl') || 'https://i.spread.name/59893f26-390b-48a6-bd54-37879463a98d_B.jpg';
